@@ -20,7 +20,12 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/set-cookie', (req, res) => {
-    res.cookie('foo','bar');
+res.cookie('foo','bar',{
+        // maxAge: 10000
+        // expires: new Date('26 October 2022')
+        // httpOnly:true
+        secure: true,
+    })
     res.cookie('hoo','jioo');
     res.send('hii cookie is set')
 })
