@@ -1,4 +1,5 @@
 const express = require('express');
+const cookie_parser = require('cookie-parser');
 
 const path = require('path');
 const fileUpload = require('express-fileupload');
@@ -16,7 +17,20 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res, next) => {
     res.render('index')
+});
+
+app.get('/set-cookie', (req, res) => {
+    res.cookie('foo','bar');
+    res.cookie('hoo','jioo');
+    res.send('hii cookie is set')
 })
+
+app.get('/delete-cookie', (req, res) => {
+    res.clearCookie('foo');
+    res.send('hii cookie is delete')
+})
+
+
 
 app.post('/single', (req, res, next) => {
     try {
